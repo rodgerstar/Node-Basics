@@ -26,16 +26,38 @@
 
 //Event Argument
 
-const CheckEvent = require('events');
+// const CheckEvent = require('events');
 
 
-const Logger = require('./logger');
-const logger = new Logger();
+// const Logger = require('./logger');
+// const logger = new Logger();
 
-//Register a listener
-logger.on('messageLogged', (arg) => {
-    console.log('Here There Am Alive', arg);
+// //Register a listener
+// logger.on('messageLogged', (arg) => {
+//     console.log('Here There Am Alive', arg);
+// });
+
+
+// logger.log('message');
+
+//HTTP Module
+
+const { Socket } = require('dgram');
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+    if (req.url === '/') {
+        res.write('Found Life Out Here!');
+        res.end();
+    }
+
+    if (req.url === '/api/courses') {
+        res.write(JSON.stringify([1, 2, 3]));
+        res.write('Cant Beleieve It');
+        res.end();
+    }
 });
 
+server.listen(3000);
 
-logger.log('message');
+console.log('Port 3000 Up and Running......');
