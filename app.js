@@ -27,12 +27,15 @@
 //Event Argument
 
 const CheckEvent = require('events');
-const emitter = new CheckEvent();
+
+
+const Logger = require('./logger');
+const logger = new Logger();
 
 //Register a listener
-emitter.on('messageLogged', (arg) => {
+logger.on('messageLogged', (arg) => {
     console.log('Here There Am Alive', arg);
 });
 
-//Raise/Call an event
-emitter.emit('messageLogged', {id: 1, url: 'http://' });
+
+logger.log('message');
