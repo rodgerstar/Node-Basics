@@ -56,8 +56,13 @@ const server = http.createServer((req, res) => {
         res.write('Cant Beleieve It');
         res.end();
     }
+    if (req.url === '/api/books-store') {
+        res.write('This is Our Book Store');
+        res.write(JSON.stringify(['White Night', 'Demons', 'Crime And Punishment']));
+        res.end();
+    }
 });
 
-server.listen(3000);
+server.listen(4000);
 
-console.log('Port 3000 Up and Running......');
+console.log('Port 4000 Up and Running......');
